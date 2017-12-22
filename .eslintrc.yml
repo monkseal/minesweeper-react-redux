@@ -1,0 +1,87 @@
+parser: babel-eslint
+plugins:
+  - jsx-a11y
+  - react
+  - jest
+extends:
+  - "eslint:recommended"
+  - "airbnb"
+  - "plugin:jsx-a11y/recommended"
+  - "plugin:react/recommended"
+  - "plugin:jest/recommended"
+env:
+  browser: true
+  node: true
+  es6: true
+globals:
+  $: true
+  History: true
+  _: true
+  _gaq: true
+  fbq: true
+  jQuery: true
+  SWPX: true
+  console: true
+rules:
+  # Airbnb style guideline has arrow-parens to be used if the body has braces, but not parens.
+  # We use flow, so we need the parens sometimes for single params with type annotations.
+  # However, we can"t always use parens, as we don"t want them for simple lodash operations with
+  # inline arrow functions.
+  react/jsx-filename-extension:
+    - 1
+  arrow-parens:
+    - 0
+  no-console:
+    - "warn"
+  quotes:
+    - "error"
+    - "double"
+  no-underscore-dangle:
+    - "error"
+    - allow:
+      - "__html__"
+      - "_fbq"
+  eqeqeq:
+    - "error"
+    - "smart"
+    # - null: ignore
+  space-before-function-paren:
+    - "error"
+    - "never"
+  global-require:
+    - "off"
+  import/no-unresolved:
+    - "off"
+  import/no-extraneous-dependencies:
+    - "off"
+  jsx-a11y/href-no-hash:
+    - "off"
+  comma-dangle:
+    - "error"
+    - "never"
+  no-multi-str:
+    - "off"
+  import/extensions:
+    - "off"
+  object-shorthand:
+    - warn
+    - always
+    - ignoreConstructors: false
+      avoidQuotes: true
+  no-var:
+    - "off"
+  vars-on-top:
+    - "off"
+  func-names:
+    - "off"
+  no-param-reassign:
+  - error
+  - props: true
+    ignorePropertyModificationsFor:
+    - webpackConfig
+    - karmaConfig
+    - e
+    - req
+    - request
+    - res
+    - response
