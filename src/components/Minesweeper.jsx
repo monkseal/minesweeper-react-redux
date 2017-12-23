@@ -1,5 +1,5 @@
 import React from "react";
-import Board from "./Board";
+import Board from "../containers/Board";
 import logo from "../logo.svg";
 import "./style/Minesweeper.css";
 
@@ -10,7 +10,6 @@ const Minesweeper = () => (
       <h1 className="App-title"> React - fun fun fun</h1>
     </header>
     <Board />
-
   </div>
 )
 

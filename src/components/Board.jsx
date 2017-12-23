@@ -1,9 +1,12 @@
 import React from "react";
+import Row from "./Row";
 
-const Board = () => (
-  <table >
+const Board = ({ table }) => (
+  <table className="Table" >
     <tbody>
-      <tr><td>my first cell</td></tr>
+      {table.map((cells, i) => (
+        <Row cells={cells} key={`mine-row-${i}`} />
+      ))}
     </tbody>
   </table>
 );
