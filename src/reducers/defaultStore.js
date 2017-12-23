@@ -2,7 +2,8 @@ const defaultCell = {
   hasMine: false,
   hasFlag: false,
   isOpen: false,
-  count: 0
+  count: 0,
+  id: null
 };
 const defaultStore = {
   board: { }

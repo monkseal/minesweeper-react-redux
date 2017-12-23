@@ -1,5 +1,5 @@
 import { INIT_BOARD } from "../actions/boardActions";
-import minesweeperReducer, { emptyBoard } from "./minesweeperReducer";
+import minesweeperReducer from "./minesweeperReducer";
 import defaultStore from "./defaultStore";
 
 it("defines a board", () => {
