@@ -1,9 +1,5 @@
-import {
-  INIT_BOARD
-} from "../actions/boardActions";
-import minesweeperReducer, {
-  emptyBoard
-} from "./minesweeperReducer";
+import { INIT_BOARD } from "../actions/boardActions";
+import minesweeperReducer, { emptyBoard } from "./minesweeperReducer";
 import defaultStore from "./defaultStore";
 
 it("defines a board", () => {
@@ -12,10 +8,11 @@ it("defines a board", () => {
 
 describe("emptyBoard()", () => {
   it("builds an object with 9x9 81 keys", () => {
-    expect(Object.keys(emptyBoard(9)).length).toEqual(81);
+    expect(Object.keys(emptyBoard(9))).toHaveLength(81);
     expect(emptyBoard(9)["3,3"]).toBeDefined();
     expect(emptyBoard(9)["18,18"]).not.toBeDefined();
   });
+
   it("sets the properties of each cell", () => {
     expect(Object.keys(emptyBoard(9)["3,3"])).toEqual(["hasMine", "hasFlag", "isOpen", "count"]);
   });
@@ -48,7 +45,7 @@ describe("INIT_BOARD", () => {
     expect(newState.board["2,1"].hasMine).toEqual(false);
   });
 
-  it("sets the correct false hasMine values for the board", () => {
+  it("sets the count values for neighbor cells", () => {
     expect(newState.board["0,0"].count).toEqual(1);
     expect(newState.board["0,1"].count).toEqual(1);
     expect(newState.board["0,2"].count).toEqual(1);

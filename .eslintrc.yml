@@ -63,6 +63,9 @@ rules:
     - "off"
   import/extensions:
     - "off"
+  no-plusplus:
+    - error
+    - allowForLoopAfterthoughts: true
   object-shorthand:
     - warn
     - always
@@ -78,8 +81,6 @@ rules:
   - error
   - props: true
     ignorePropertyModificationsFor:
-    - webpackConfig
-    - karmaConfig
     - e
     - req
     - request

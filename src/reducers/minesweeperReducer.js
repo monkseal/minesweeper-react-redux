@@ -12,11 +12,9 @@ const emptyBoard = (boardSize) => {
   return board;
 };
 
-const minesweeperReducer = (state = defaultStore, action = {
-  type: ""
-}) => {
+const minesweeperReducer = (state = defaultStore, action = { type: "" }) => {
   switch (action.type) {
-    case INIT_BOARD:
+    case INIT_BOARD: {
       const boardSize = action.size;
       const board = emptyBoard(boardSize);
       action.mineLocations.forEach((coordinate) => {
@@ -26,18 +24,16 @@ const minesweeperReducer = (state = defaultStore, action = {
       for (let row = 0; row < boardSize; row++) {
         for (let col = 0; col < boardSize; col++) {
           const coordinate = `${row},${col}`;
-          if (board[coordinate].hasMine) { continue; }
-          let mineCount = 0;
-
-          for (let x = row - 1; x <= row + 1; x++) {
-            for (let y = col - 1; y <= col + 1; y++) {
-              const mineCheckCoord = `${x},${y}`;
-              if (board[mineCheckCoord] && board[mineCheckCoord].hasMine) {
-                mineCount++;
+          if (!board[coordinate].hasMine) {
+            for (let x = row - 1; x <= row + 1; x++) {
+              for (let y = col - 1; y <= col + 1; y++) {
+                const mineCheckCoord = `${x},${y}`;
+                if (board[mineCheckCoord] && board[mineCheckCoord].hasMine) {
+                  board[coordinate].count += 1;
+                }
               }
             }
           }
-          board[coordinate].count = mineCount;
         }
       }
 
@@ -45,6 +41,7 @@ const minesweeperReducer = (state = defaultStore, action = {
         ...state,
         board
       };
+    }
     default:
       return state;
   }
