@@ -1,6 +1,6 @@
-import Board from "../components/Board";
 import { connect } from "react-redux";
 import * as BoardHelpers from "../reducers/BoardHelpers";
+import Board from "../components/Board";
 
 const mapStateToProps = ({ board }) => {
   const boardDim = Math.sqrt(Object.keys(board).length);
@@ -14,4 +14,4 @@ const mapStateToProps = ({ board }) => {
 };
 
 const Container = connect(mapStateToProps)(Board);
-export { Container as default, mapStateToProps } ;
+export { Container as default, mapStateToProps };

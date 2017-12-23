@@ -11,6 +11,6 @@ const Minesweeper = () => (
     </header>
     <Board />
   </div>
-)
+);
 
 export default Minesweeper;

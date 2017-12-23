@@ -26,16 +26,14 @@ const minesweeperReducer = (state = defaultStore, action = { type: "" }) => {
     }
 
     case OPEN_CELL: {
-      const id = action.id;
-      const cell = {...state.board[action.id], isOpen: true}
-      const board =  {...state.board, [id]:cell   }
+      const cell = { ...state.board[action.id], isOpen: true };
+      const board = { ...state.board, [action.id]: cell };
       return { ...state, board };
     }
 
     case TOGGLE_CELL_FLAG: {
-      const id = action.id;
-      const cell = {...state.board[action.id], hasFlag: !state.board[action.id].hasFlag}
-      const board =  {...state.board, [id]:cell   }
+      const cell = { ...state.board[action.id], hasFlag: !state.board[action.id].hasFlag };
+      const board = { ...state.board, [action.id]: cell };
       return { ...state, board };
     }
 

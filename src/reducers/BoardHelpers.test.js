@@ -10,8 +10,6 @@ describe("emptyBoard()", () => {
   });
 
   it("sets the properties of each cell", () => {
-    expect(Object.keys(emptyBoard(9)["3,3"])).toEqual(
-      ["hasMine", "hasFlag", "isOpen", "count", "id"]
-    );
+    expect(Object.keys(emptyBoard(9)["3,3"])).toEqual(["hasMine", "hasFlag", "isOpen", "count", "id"]);
   });
 });

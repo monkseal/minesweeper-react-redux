@@ -18,7 +18,6 @@ describe("board action", () => {
   });
 
   describe("INIT_BOARD", () => {
-
     it("sets the correct true hasMine values for the board", () => {
       expect(initState.board["1,1"].hasMine).toEqual(true);
       expect(initState.board["2,2"].hasMine).toEqual(true);
@@ -53,6 +52,25 @@ describe("board action", () => {
       expect(initState.board["2,0"].count).toEqual(1);
       expect(initState.board["2,1"].count).toEqual(2);
     });
+
+    describe("when complex table", () => {
+      const bigAction = {
+        type: INIT_BOARD,
+        boardSize: 9,
+        mineLocations: ["1,1", "2,2", "3,3", "1,8", "6,6", "7,7"]
+      };
+      let newState;
+      it("sets the count values for neighbor cells", () => {
+        newState = minesweeperReducer(defaultStore, bigAction);
+        expect(newState.board["0,0"].count).toEqual(1);
+        expect(newState.board["0,1"].count).toEqual(1);
+        expect(newState.board["0,2"].count).toEqual(1);
+        expect(newState.board["1,0"].count).toEqual(1);
+        expect(newState.board["1,2"].count).toEqual(2);
+        expect(newState.board["2,0"].count).toEqual(1);
+        expect(newState.board["2,1"].count).toEqual(2);
+      });
+    });
   });
 
   describe("OPEN_CELL", () => {
@@ -61,21 +79,21 @@ describe("board action", () => {
     it("sets isOpen for id", () => {
       const newState = minesweeperReducer(initState, openAction);
       expect(newState.board["0,1"].isOpen).toEqual(true);
-    })
+    });
   });
 
 
   describe("TOGGLE_CELL_FLAG", () => {
     const toggleAction = { type: TOGGLE_CELL_FLAG, id: "0,1" };
 
-    describe("when isFlag is false",() => {
+    describe("when isFlag is false", () => {
       it("sets isFlag for id", () => {
         const newState = minesweeperReducer(initState, toggleAction);
         expect(newState.board["0,1"].hasFlag).toEqual(true);
       });
     });
 
-    describe("when isFlag is true",() => {
+    describe("when isFlag is true", () => {
       let toggledState;
 
       beforeEach(() => {

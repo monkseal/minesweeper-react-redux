@@ -1,4 +1,4 @@
-import { mapStateToProps } from "./Board"
+import { mapStateToProps } from "./Board";
 
 describe("mapStateToProps", () => {
   const cell = {
