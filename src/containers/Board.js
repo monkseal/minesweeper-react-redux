@@ -15,4 +15,4 @@ const mapStateToProps = (state) => {
 };
 
 const Container = connect(mapStateToProps)(Board);
-export default Container;
+export { Container as default, mapStateToProps } ;

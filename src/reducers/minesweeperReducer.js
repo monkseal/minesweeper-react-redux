@@ -1,22 +1,12 @@
 import { INIT_BOARD } from "../actions/boardActions";
 import defaultStore, { defaultCell } from "./defaultStore";
-
-const emptyBoard = (boardSize) => {
-  const board = {};
-  for (let row = 0; row < boardSize; row++) {
-    for (let col = 0; col < boardSize; col++) {
-      const coordinate = `${row},${col}`;
-      board[coordinate] = { ...defaultCell };
-    }
-  }
-  return board;
-};
+import * as BoardHelpers from "./BoardHelpers";
 
 const minesweeperReducer = (state = defaultStore, action = { type: "" }) => {
   switch (action.type) {
     case INIT_BOARD: {
       const boardSize = action.size;
-      const board = emptyBoard(boardSize);
+      const board = BoardHelpers.emptyBoard(boardSize);
       action.mineLocations.forEach((coordinate) => {
         board[coordinate].hasMine = true;
       });
@@ -47,8 +37,4 @@ const minesweeperReducer = (state = defaultStore, action = { type: "" }) => {
   }
 };
 
-export {
-  minesweeperReducer as
-  default,
-  emptyBoard
-};
+export default minesweeperReducer; 
