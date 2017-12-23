@@ -7,7 +7,7 @@ import { INIT_BOARD } from "./actions/boardActions";
 
 const initAction = {
   type: INIT_BOARD,
-  size: 9,
+  boardSize: 9,
   mineLocations: ["1,1", "2,2", "3,3", "1,8", "6,6", "7,7"]
 };
 

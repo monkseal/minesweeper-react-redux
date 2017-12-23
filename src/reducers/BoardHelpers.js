@@ -9,6 +9,20 @@ const forBoardSize = (boardSize, callback) => {
   }
 };
 
+const forSurroundCells = (coordinate, callback) => {
+  const coords = coordinate.split(",")
+  const row = coords[0];
+  const col = coords[1];
+  for (let x = row - 1; x <= row + 1; x++) {
+    for (let y = col - 1; y <= col + 1; y++) {
+       if (x > 0 || y > 0) {
+        const coordinate = `${x},${y}`;
+        callback(coordinate, x, y);
+      }
+    }
+  }
+};
+
 const emptyBoard = (boardSize) => {
   const board = {};
   forBoardSize(boardSize, (coordinate) => {
@@ -17,4 +31,4 @@ const emptyBoard = (boardSize) => {
   return board;
 };
 
-export { emptyBoard, forBoardSize };
+export { emptyBoard, forBoardSize, forSurroundCells };
