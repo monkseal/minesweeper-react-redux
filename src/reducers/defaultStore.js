@@ -1,14 +1,11 @@
+const defaultCell = {
+  hasMine: false,
+  hasFlag: false,
+  isOpen: false,
+  count: 0
+};
 const defaultStore = {
-  board: {
-
-  },
-  defaultCell: {
-    hasMine: false,
-    hasFlag: false,
-    isOpen: false,
-    count: 0
-  },
-  size: 9
+  board: { }
 };
 
-export default defaultStore;
+export { defaultStore as default, defaultCell };

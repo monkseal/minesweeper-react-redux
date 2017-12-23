@@ -1,12 +1,12 @@
 import { INIT_BOARD } from "../actions/boardActions";
-import defaultStore from "./defaultStore";
+import defaultStore, { defaultCell } from "./defaultStore";
 
 const emptyBoard = (boardSize) => {
   const board = {};
   for (let row = 0; row < boardSize; row++) {
     for (let col = 0; col < boardSize; col++) {
       const coordinate = `${row},${col}`;
-      board[coordinate] = { ...defaultStore.defaultCell };
+      board[coordinate] = { ...defaultCell };
     }
   }
   return board;

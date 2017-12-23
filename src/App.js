@@ -1,22 +1,18 @@
-import React, { Component } from "react";
-import logo from "./logo.svg";
-import "./App.css";
+import React from "react";
+import { Provider } from "react-redux";
+import { createStore } from "redux";
+import minesweeperReducer from "./reducers/minesweeperReducer";
+import Minesweeper from "./components/Minesweeper";
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title"> React - fun fun fun</h1>
-        </header>
+const App = () => {
+  const store = createStore(minesweeperReducer);
+  return (
+    <Provider store={store}>
+      <Minesweeper />
+    </Provider>
+  );
+  //
+};
 
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
-    );
-  }
-}
 
 export default App;
