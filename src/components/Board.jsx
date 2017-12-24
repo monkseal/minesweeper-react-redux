@@ -19,7 +19,7 @@ const Board = ({ table }) => (
 );
 
 Board.propTypes = {
-  table: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.shape(...Cell.propTypes))).isRequired
+  table: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.object)).isRequired
 };
 
 export default Board;

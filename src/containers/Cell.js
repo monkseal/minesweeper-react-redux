@@ -1,4 +1,3 @@
-
 import { connect } from "react-redux";
 import { OPEN_CELL, TOGGLE_CELL_FLAG } from "../actions/boardActions";
 import Cell from "../components/Cell";
@@ -14,7 +13,6 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch({ type: TOGGLE_CELL_FLAG, id });
   }
 });
-
 
 const Container = connect(mapStateToProps, mapDispatchToProps)(Cell);
 export { Container as default, mapStateToProps };

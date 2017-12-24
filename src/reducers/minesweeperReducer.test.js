@@ -73,36 +73,68 @@ describe("board action", () => {
     });
   });
 
-  describe("OPEN_CELL", () => {
+  describe("flag and open action", () => {
     const openAction = { type: OPEN_CELL, id: "0,1" };
 
-    it("sets isOpen for id", () => {
-      const newState = minesweeperReducer(initState, openAction);
-      expect(newState.board["0,1"].isOpen).toEqual(true);
-    });
-  });
+    describe("OPEN_CELL", () => {
 
+      it("sets isOpen for id", () => {
+        const newState = minesweeperReducer(initState, openAction);
+        expect(newState.board["0,1"].isOpen).toEqual(true);
+      });
 
-  describe("TOGGLE_CELL_FLAG", () => {
-    const toggleAction = { type: TOGGLE_CELL_FLAG, id: "0,1" };
+      describe("when hasFlag is true", () => {
+        let hasFlagState;
 
-    describe("when hasFlag is false", () => {
-      it("sets hasFlag for id", () => {
-        const newState = minesweeperReducer(initState, toggleAction);
-        expect(newState.board["0,1"].hasFlag).toEqual(true);
+        beforeEach(() => {
+          const toggleAction = { type: TOGGLE_CELL_FLAG, id: "0,1" };
+          hasFlagState = minesweeperReducer(initState, toggleAction);
+        });
+
+        it("does not set isOpen", () => {
+          const newState = minesweeperReducer(hasFlagState, openAction);
+          expect(newState.board["0,1"].hasFlag).toEqual(true);
+          expect(newState.board["0,1"].isOpen).toEqual(false);
+        });
       });
     });
 
-    describe("when hasFlag is true", () => {
-      let toggledState;
+    describe("TOGGLE_CELL_FLAG", () => {
+      const toggleAction = { type: TOGGLE_CELL_FLAG, id: "0,1" };
 
-      beforeEach(() => {
-        toggledState = minesweeperReducer(initState, toggleAction);
+      describe("when hasFlag is false", () => {
+        it("sets hasFlag for id", () => {
+          const newState = minesweeperReducer(initState, toggleAction);
+          expect(newState.board["0,1"].hasFlag).toEqual(true);
+        });
       });
 
-      it("sets hasFlag for id", () => {
-        const newState = minesweeperReducer(toggledState, toggleAction);
-        expect(newState.board["0,1"].hasFlag).toEqual(false);
+      describe("when already isOpen", () => {
+        let toggledState;
+
+        beforeEach(() => {
+          toggledState = minesweeperReducer(initState, openAction);
+        });
+
+        it("can change hasFlag", () => {
+          const newState = minesweeperReducer(toggledState, toggleAction);
+          expect(newState.board["0,1"].isOpen).toEqual(true);
+          expect(newState.board["0,1"].hasFlag).toEqual(false);
+        });
+      })
+
+      describe("when hasFlag is true", () => {
+        let toggledState;
+
+        beforeEach(() => {
+          toggledState = minesweeperReducer(initState, toggleAction);
+        });
+
+        it("sets hasFlag for id", () => {
+          const newState = minesweeperReducer(toggledState, toggleAction);
+          expect(newState.board["0,1"].hasFlag).toEqual(false);
+        });
+
       });
     });
   });
