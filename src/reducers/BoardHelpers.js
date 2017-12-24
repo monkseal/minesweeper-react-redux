@@ -1,9 +1,9 @@
 import { defaultCell } from "./defaultStore";
 
-const SEPERATOR = ",";
+const SEPARATOR = ",";
 
 const parseCoordinates = (id) => {
-  const coords = id.split(SEPERATOR);
+  const coords = id.split(SEPARATOR);
   const row = Number(coords[0]);
   const col = Number(coords[1]);
   return { row, col };
@@ -12,7 +12,7 @@ const parseCoordinates = (id) => {
 const forBoardSize = (boardSize, callback) => {
   for (let row = 0; row < boardSize; row++) {
     for (let col = 0; col < boardSize; col++) {
-      const coordinate = [row, col].join(SEPERATOR);
+      const coordinate = [row, col].join(SEPARATOR);
 
       callback(coordinate, row, col);
     }
@@ -25,7 +25,7 @@ const forSurroundCells = (coordinate, callback) => {
   for (let x = p.row - 1; x <= p.row + 1; x++) {
     for (let y = p.col - 1; y <= p.col + 1; y++) {
       if (x >= 0 || y >= 0) {
-        const surroundCoord = [x, y].join(SEPERATOR);
+        const surroundCoord = [x, y].join(SEPARATOR);
         callback(surroundCoord, x, y);
       }
     }
