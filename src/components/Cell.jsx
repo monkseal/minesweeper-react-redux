@@ -1,7 +1,11 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events,
+                  jsx-a11y/no-noninteractive-element-interactions
+*/
+
 import React from "react";
 import PropTypes from "prop-types";
 
-const OpenCell = ({ count, hasMine, isOpen }) => (
+const OpenCell = ({ count, hasMine }) => (
   <div className="Cell__cover Cell__cover--opened" >
     {!hasMine &&
       <span className={`Cell__number${count}`}>{count}</span>
