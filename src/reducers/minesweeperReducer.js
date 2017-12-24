@@ -29,8 +29,7 @@ const minesweeperReducer = (state = defaultStore, action = { type: "" }) => {
       if (state.board[action.id].hasFlag) {
         return state;
       }
-      const cell = { ...state.board[action.id], isOpen: true };
-      const board = { ...state.board, [action.id]: cell };
+      const board = BoardHelpers.open(state.board, action.id);
       return { ...state, board };
     }
 
