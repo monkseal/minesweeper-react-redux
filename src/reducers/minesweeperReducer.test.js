@@ -86,21 +86,21 @@ describe("board action", () => {
   describe("TOGGLE_CELL_FLAG", () => {
     const toggleAction = { type: TOGGLE_CELL_FLAG, id: "0,1" };
 
-    describe("when isFlag is false", () => {
-      it("sets isFlag for id", () => {
+    describe("when hasFlag is false", () => {
+      it("sets hasFlag for id", () => {
         const newState = minesweeperReducer(initState, toggleAction);
         expect(newState.board["0,1"].hasFlag).toEqual(true);
       });
     });
 
-    describe("when isFlag is true", () => {
+    describe("when hasFlag is true", () => {
       let toggledState;
 
       beforeEach(() => {
         toggledState = minesweeperReducer(initState, toggleAction);
       });
 
-      it("sets isFlag for id", () => {
+      it("sets hasFlag for id", () => {
         const newState = minesweeperReducer(toggledState, toggleAction);
         expect(newState.board["0,1"].hasFlag).toEqual(false);
       });

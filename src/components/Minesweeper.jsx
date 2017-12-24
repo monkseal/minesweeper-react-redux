@@ -7,7 +7,7 @@ const Minesweeper = () => (
   <div className="App">
     <header className="App-header">
       <img src={logo} className="App-logo" alt="logo" />
-      <h1 className="App-title"> React - fun fun fun</h1>
+      <h1 className="App-title"> React/Redux - Minesweeper</h1>
     </header>
     <Board />
   </div>
