@@ -35,7 +35,7 @@ The build is minified and the filenames include the hashes.<br>
 
 
 ### TODO:
-- [ ] Write code determine if Won or Lost
+- [ ] Write code to determine if Won or Lost
 - [ ] Add header with smiley button to restart game.
 - [ ] Add random mine generation code.
 - [ ] Add different levels.
