@@ -6,7 +6,7 @@ The project was bootstrapped with [Create React App](https://github.com/facebook
 
 ## Running locally
 
-You will need a locally JavaScript environment with yarn/npm setup. After cloning this repo, in the project directory, you can run:
+You will need a local JavaScript development environment set up with yarn and npm. After cloning this repo, in the project directory, you can run:
 
 ### `yarn start`
 
@@ -17,8 +17,7 @@ The page will reload if you make edits.
 
 ### `yarn test`
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](#running-tests) for more information.
+Launches the test runner in the interactive watch mode.
 
 ### `yarn lint`
 

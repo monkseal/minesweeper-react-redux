@@ -6,7 +6,7 @@ it("defines a board", () => {
   expect(minesweeperReducer().board).toBeDefined();
 });
 
-describe("board action", () => {
+describe("Board action", () => {
   let initState;
   let initAction;
   const defaultInitAction = {

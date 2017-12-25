@@ -64,4 +64,8 @@ const emptyBoard = (boardSize) => {
   return board;
 };
 
-export { emptyBoard, forBoardSize, forSurroundCells, open };
+const hasLost = (board) => {
+  return Object.values(board).some((cell) => cell.hasMine && cell.isOpen);
+}
+
+export { emptyBoard, forBoardSize, forSurroundCells, hasLost, open };

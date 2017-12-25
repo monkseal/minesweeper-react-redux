@@ -5,6 +5,7 @@ const defaultCell = {
   count: 0,
   id: null
 };
+
 const defaultStore = {
   board: { }
 };
