@@ -8,13 +8,13 @@ import PropTypes from "prop-types";
 const LevelMenu = ({ changeLevel }) => (
   <div className="MineSweeper__level">
     <label>
-      <input type="radio" name="level" onChange={() => changeLevel("Beginner") } />Beginner
+      <input type="radio" name="level" onChange={() => changeLevel("Beginner")} />Beginner
     </label>
     <label>
-      <input type="radio" name="level" onChange={() => changeLevel("Intermediate") } />Intermediate
+      <input type="radio" name="level" onChange={() => changeLevel("Intermediate")} />Intermediate
     </label>
     <label>
-      <input type="radio" name="level" onChange={() => changeLevel("Expert") } />Expert
+      <input type="radio" name="level" onChange={() => changeLevel("Expert")} />Expert
     </label>
   </div>
 );

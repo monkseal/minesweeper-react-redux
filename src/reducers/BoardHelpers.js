@@ -14,7 +14,6 @@ const forBoardSize = (boardSize, callback) => {
   for (let row = 0; row < boardSize; row++) {
     for (let col = 0; col < boardSize; col++) {
       const coordinate = [row, col].join(SEPARATOR);
-
       callback(coordinate, row, col);
     }
   }

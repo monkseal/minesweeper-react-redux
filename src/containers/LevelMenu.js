@@ -3,7 +3,7 @@ import LevelMenu from "../components/LevelMenu";
 import * as BoardHelpers from "../reducers/BoardHelpers";
 import { RESET_BOARD } from "../actions/boardActions";
 
-const mapStateToProps = (state, ownProps) => ownProps
+const mapStateToProps = (state, ownProps) => ownProps;
 
 const mapDispatchToProps = (dispatch) => ({
   changeLevel: (level) => {
