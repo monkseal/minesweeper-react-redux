@@ -4,21 +4,25 @@ import PropTypes from "prop-types";
 
 import Cell from "../containers/Cell";
 import GameMenu from "../containers/GameMenu";
+import LevelMenu from "../containers/LevelMenu";
 
 const Board = ({ table }) => (
-  <div className="MineSweeper easy">
-    <GameMenu />
-    <table className="Table" >
-      <tbody>
-        {table.map((cells, row) => (
-          <tr key={`mine-row-${row}`}>
-            {cells.map((cell) => (
-              <Cell key={`mine-cell-${cell.id}`} {...cell} />
+  <div>
+    <LevelMenu />
+    <div className="MineSweeper easy">
+      <GameMenu />
+      <table className="Table" >
+        <tbody>
+          {table.map((cells, row) => (
+            <tr key={`mine-row-${row}`}>
+              {cells.map((cell) => (
+                <Cell key={`mine-cell-${cell.id}`} {...cell} />
             ))}
-          </tr>
+            </tr>
         ))}
-      </tbody>
-    </table>
+        </tbody>
+      </table>
+    </div>
   </div>
 );
 
