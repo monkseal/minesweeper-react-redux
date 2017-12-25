@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import { defaultCell } from "./defaultStore";
 
 const SEPARATOR = ",";
@@ -33,7 +34,7 @@ const forSurroundCells = (coordinate, callback) => {
 };
 
 const open = (board, id) => {
-  if (board[id].isOpen) { return board; }
+  if (board[id].isOpen || board[id].hasFlag) { return board; }
 
   const cell = { ...board[id], isOpen: true };
   const newBoard = { ...board, [id]: cell };
@@ -42,6 +43,15 @@ const open = (board, id) => {
     return openAround(newBoard, id);
     /* eslint-enable */
   }
+  return newBoard;
+};
+
+const toggleFlag = (board, id) => {
+  if (board[id].isOpen) {
+    return board;
+  }
+  const cell = { ...board[id], hasFlag: !board[id].hasFlag };
+  const newBoard = { ...board, [id]: cell };
   return newBoard;
 };
 
@@ -64,6 +74,25 @@ const emptyBoard = (boardSize) => {
   return board;
 };
 
+const resetBoard = (boardSize, mineLocations) => {
+  const board = emptyBoard(boardSize);
+
+  mineLocations.forEach((coordinate) => {
+    board[coordinate].hasMine = true;
+  });
+
+  forBoardSize(boardSize, (coordinate) => {
+    if (!board[coordinate].hasMine) {
+      forSurroundCells(coordinate, (mineCheckCoord) => {
+        if (board[mineCheckCoord] && board[mineCheckCoord].hasMine) {
+          board[coordinate].count += 1;
+        }
+      });
+    }
+  });
+  return board;
+};
+
 const hasLost = (board) => Object.values(board).some((cell) => cell.hasMine && cell.isOpen);
 const hasWon = (board) => {
   if (hasLost(board)) { return false; }
@@ -74,4 +103,4 @@ const hasWon = (board) => {
   return nonOpenCount === flaggedMineCount;
 };
 
-export { emptyBoard, forBoardSize, forSurroundCells, hasLost, hasWon, open };
+export { emptyBoard, forBoardSize, forSurroundCells, hasLost, hasWon, open, resetBoard, toggleFlag };

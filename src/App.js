@@ -3,10 +3,10 @@ import { Provider } from "react-redux";
 import { createStore } from "redux";
 import minesweeperReducer from "./reducers/minesweeperReducer";
 import Minesweeper from "./components/Minesweeper";
-import { INIT_BOARD } from "./actions/boardActions";
+import { RESET_BOARD } from "./actions/boardActions";
 
 const initAction = {
-  type: INIT_BOARD,
+  type: RESET_BOARD,
   boardSize: 9,
   mineLocations: ["5,5", "1,3", "2,2", "3,3", "1,8", "6,6", "7,7"]
 };

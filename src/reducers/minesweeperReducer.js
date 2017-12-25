@@ -1,44 +1,25 @@
-import { INIT_BOARD, OPEN_CELL, TOGGLE_CELL_FLAG } from "../actions/boardActions";
+import { RESET_BOARD, OPEN_CELL, TOGGLE_CELL_FLAG } from "../actions/boardActions";
 import defaultStore from "./defaultStore";
 import * as BoardHelpers from "./BoardHelpers";
 
 const minesweeperReducer = (state = defaultStore, action = { type: "" }) => {
   switch (action.type) {
-    case INIT_BOARD: {
-      const board = BoardHelpers.emptyBoard(action.boardSize);
-      action.mineLocations.forEach((coordinate) => {
-        board[coordinate].hasMine = true;
-      });
-
-      BoardHelpers.forBoardSize(action.boardSize, (coordinate) => {
-        if (!board[coordinate].hasMine) {
-          BoardHelpers.forSurroundCells(coordinate, (mineCheckCoord) => {
-            if (board[mineCheckCoord] && board[mineCheckCoord].hasMine) {
-              board[coordinate].count += 1;
-            }
-          });
-        }
-      });
-
+    case RESET_BOARD: {
+      const board = BoardHelpers.resetBoard(action.boardSize, action.mineLocations);
       return {
+        // check the beginner, expert, etc and figure out the board
+        // create random mine location for that board size
         ...state, board
       };
     }
 
     case OPEN_CELL: {
-      if (state.board[action.id].hasFlag) {
-        return state;
-      }
       const board = BoardHelpers.open(state.board, action.id);
       return { ...state, board };
     }
 
     case TOGGLE_CELL_FLAG: {
-      if (state.board[action.id].isOpen) {
-        return state;
-      }
-      const cell = { ...state.board[action.id], hasFlag: !state.board[action.id].hasFlag };
-      const board = { ...state.board, [action.id]: cell };
+      const board = BoardHelpers.toggleFlag(state.board, action.id);
       return { ...state, board };
     }
 

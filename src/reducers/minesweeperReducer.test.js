@@ -1,4 +1,4 @@
-import { INIT_BOARD, OPEN_CELL, TOGGLE_CELL_FLAG } from "../actions/boardActions";
+import { RESET_BOARD, OPEN_CELL, TOGGLE_CELL_FLAG } from "../actions/boardActions";
 import minesweeperReducer from "./minesweeperReducer";
 import defaultStore from "./defaultStore";
 
@@ -10,13 +10,13 @@ describe("Board action", () => {
   let initState;
   let initAction;
   const defaultInitAction = {
-    type: INIT_BOARD,
+    type: RESET_BOARD,
     boardSize: 3,
     mineLocations: ["1,1", "2,2"]
   };
   const createInitState = () => minesweeperReducer(defaultStore, initAction);
 
-  describe("INIT_BOARD", () => {
+  describe("RESET_BOARD", () => {
     beforeEach(() => {
       initAction = defaultInitAction;
       initState = createInitState();
@@ -59,7 +59,7 @@ describe("Board action", () => {
 
     describe("when complex table", () => {
       const bigAction = {
-        type: INIT_BOARD,
+        type: RESET_BOARD,
         boardSize: 9,
         mineLocations: ["1,1", "2,2", "3,3", "1,8", "6,6", "7,7"]
       };
@@ -148,7 +148,7 @@ describe("Board action", () => {
 
   describe("test openAround", () => {
     const openAroundInitAction = {
-      type: INIT_BOARD,
+      type: RESET_BOARD,
       boardSize: 5,
       mineLocations: ["1,3", "3,3"]
     };
