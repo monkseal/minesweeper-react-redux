@@ -219,11 +219,11 @@ object, embed {
   background: url("../images/icn_face_01.png") no-repeat center center, #ccc;
 }
 
-.MineSweeper__face .clear {
+.MineSweeper__face .winner {
   background: url("../images/icn_face_02.png") no-repeat center center, #ccc;
 }
 
-.MineSweeper__face .gameover {
+.MineSweeper__face .loser {
   background: url("../images/icn_face_03.png") no-repeat center center, #ccc;
 }
 
