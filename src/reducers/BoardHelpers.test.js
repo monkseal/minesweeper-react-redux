@@ -1,4 +1,4 @@
-import { emptyBoard, hasLost } from "./BoardHelpers";
+import { emptyBoard, hasLost, hasWon } from "./BoardHelpers";
 
 const boardFixture = {
   "0,0": {
@@ -16,11 +16,47 @@ const boardFixture = {
 };
 
 const lostBoardFixture = {
-  ...boardFixture, "0,0": {
+  ...boardFixture,
+  "0,0": {
     hasMine: true, hasFlag: false, isOpen: true
   }
-}
+};
 
+const playing1BoardFixture = {
+  ...boardFixture,
+  "1,0": {
+    hasMine: false, hasFlag: false, isOpen: true
+  }
+};
+
+const playing2BoardFixture = {
+  ...boardFixture,
+  "1,0": {
+    hasMine: true, hasFlag: true, isOpen: false
+  }
+};
+
+const playing3BoardFixture = {
+  ...boardFixture,
+  "1,1": {
+    hasMine: false, hasFlag: true, isOpen: false
+  }
+};
+
+const wonBoardFixture = {
+  "0,0": { // mine
+    hasMine: true, hasFlag: true, isOpen: false
+  },
+  "0,1": { // open
+    hasMine: false, hasFlag: false, isOpen: true
+  },
+  "1,0": { // mine
+    hasMine: true, hasFlag: true, isOpen: false
+  },
+  "1,1": { // open
+    hasMine: false, hasFlag: false, isOpen: true
+  }
+};
 
 describe("hasLost", () => {
   it("returns false when you haven't lost", () => {
@@ -29,6 +65,32 @@ describe("hasLost", () => {
 
   it("returns true when you lose", () => {
     expect(hasLost(lostBoardFixture)).toBeTruthy();
+  });
+
+  it("returns false when still playing", () => {
+    expect(hasLost(playing1BoardFixture)).toBeFalsy();
+    expect(hasLost(playing2BoardFixture)).toBeFalsy();
+    expect(hasLost(playing3BoardFixture)).toBeFalsy();
+  });
+});
+
+describe("hasWon", () => {
+  it("returns false when you haven't won", () => {
+    expect(hasWon(boardFixture)).toBeFalsy();
+  });
+
+  it("returns false when you lose", () => {
+    expect(hasWon(lostBoardFixture)).toBeFalsy();
+  });
+
+  it("returns true when you win", () => {
+    expect(hasWon(wonBoardFixture)).toBeTruthy();
+  });
+
+  it("returns false when still playing", () => {
+    expect(hasWon(playing1BoardFixture)).toBeFalsy();
+    expect(hasWon(playing2BoardFixture)).toBeFalsy();
+    expect(hasWon(playing3BoardFixture)).toBeFalsy();
   });
 });
 

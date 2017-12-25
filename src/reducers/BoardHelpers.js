@@ -64,8 +64,14 @@ const emptyBoard = (boardSize) => {
   return board;
 };
 
-const hasLost = (board) => {
-  return Object.values(board).some((cell) => cell.hasMine && cell.isOpen);
-}
+const hasLost = (board) => Object.values(board).some((cell) => cell.hasMine && cell.isOpen);
+const hasWon = (board) => {
+  if (hasLost(board)) { return false; }
 
-export { emptyBoard, forBoardSize, forSurroundCells, hasLost, open };
+  const nonOpenCount = Object.values(board).filter((cell) => !cell.isOpen).length;
+  const flaggedMineCount = Object.values(board).filter((cell) =>
+    cell.hasMine && cell.hasFlag).length;
+  return nonOpenCount === flaggedMineCount;
+};
+
+export { emptyBoard, forBoardSize, forSurroundCells, hasLost, hasWon, open };
