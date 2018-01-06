@@ -1,5 +1,6 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events,
-                  jsx-a11y/no-noninteractive-element-interactions
+                  jsx-a11y/no-noninteractive-element-interactions,
+                  react/no-did-mount-set-state,
                   jsx-a11y/interactive-supports-focus
 */
 import React from "react";
@@ -37,14 +38,18 @@ class GameMenu extends React.Component {
       this.setState({ resetTimer: true });
     }
   }
-  
+
   render() {
     const { gameStatus, resetGame, flagCount } = this.props;
     return (
       <div>
         <span className="MineSweeper__flagNum">{`${flagCount}`}</span>
         <span className="MineSweeper__face">
-          <span className={`button ${gameStatus}`} role="button" onClick={() => resetGame()} />
+          <span
+            className={`button ${gameStatus}`}
+            role="button"
+            onClick={() => resetGame()}
+          />
         </span>
         <span className="MineSweeper__time">{this.state.counter} </span>
       </div>

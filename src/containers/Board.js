@@ -9,7 +9,6 @@ const mapStateToProps = ({ board }) => {
     if (!table[row]) { table[row] = []; }
     table[row][col] = board[coordinate];
   });
-  // TODO
   return { table, activeLevel: BoardHelpers.currentGameLevelId(board) };
 };
 

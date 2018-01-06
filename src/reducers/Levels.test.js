@@ -1,4 +1,4 @@
-import Levels, { mineLocationsFor } from "./Levels";
+import { mineLocationsFor } from "./Levels";
 
 describe("mineLocationsFor", () => {
   describe("when BEGINNER", () => {
