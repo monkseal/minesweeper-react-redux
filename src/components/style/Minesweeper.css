@@ -305,3 +305,12 @@ object, embed {
   display: block;
   height: 100%;
 }
+.links {
+  margin-top: 40px;
+  text-align: center;
+  line-height: 1.4em;
+  font-size: 0.85em;
+}
+a.episode-link {
+  margin-right: 10px;
+}
