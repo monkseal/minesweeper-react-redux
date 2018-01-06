@@ -5,15 +5,50 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const GameMenu = ({ gameStatus, resetGame, flagCount }) => (
-  <div>
-    <span className="MineSweeper__flagNum">{`${flagCount}`}</span>
-    <span className="MineSweeper__face">
-      <span className={`button ${gameStatus}`} role="button" onClick={() => resetGame()} />
-    </span>
-    <span className="MineSweeper__time">TODO </span>
-  </div>
-);
+
+class GameMenu extends React.Component {
+  constructor() {
+    super();
+    this.tick = this.tick.bind(this);
+    this.state = { timer: null, counter: 0, resetTimer: true };
+  }
+
+  componentDidMount() {
+    const timer = setInterval(this.tick, 1000);
+    this.setState({ timer });
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.state.timer);
+  }
+
+  tick() {
+    if (this.props.gameStatus === "playing") {
+      let counter = this.state.counter + 1;
+      if (this.state.resetTimer) {
+        counter = 0;
+      }
+      this.setState({ counter, resetTimer: false });
+    } else {
+      this.setState({ resetTimer: true });
+    }
+  }
+  render() {
+    const { gameStatus, resetGame, flagCount } = this.props;
+    return (
+      <div>
+        <span className="MineSweeper__flagNum">{`${flagCount}`}</span>
+        <span className="MineSweeper__face">
+          <span className={`button ${gameStatus}`} role="button" onClick={() => resetGame()} />
+        </span>
+        <span className="MineSweeper__time">{this.state.counter} </span>
+      </div>
+    );
+  }
+}
+// const GameMenu = ({ gameStatus, resetGame, flagCount }) => (
+//
+// );
 
 GameMenu.propTypes = {
   gameStatus: PropTypes.string.isRequired,
