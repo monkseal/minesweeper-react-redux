@@ -215,7 +215,7 @@ object, embed {
   display: block;
 }
 
-.MineSweeper__face .playing {
+.MineSweeper__face .playing, .MineSweeper__face .notPlaying {
   background: url("../images/icn_face_01.png") no-repeat center center, #ccc;
 }
 

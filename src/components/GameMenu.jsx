@@ -19,10 +19,14 @@ class GameMenu extends React.Component {
   }
 
   componentWillUnmount() {
-    clearInterval(this.state.timer);
+    this.clearInterval(this.state.timer);
   }
 
   tick() {
+    if (this.props.gameStatus === "notPlaying") {
+      this.setState({ counter: 0, resetTimer: true });
+    }
+
     if (this.props.gameStatus === "playing") {
       let counter = this.state.counter + 1;
       if (this.state.resetTimer) {
@@ -33,6 +37,7 @@ class GameMenu extends React.Component {
       this.setState({ resetTimer: true });
     }
   }
+  
   render() {
     const { gameStatus, resetGame, flagCount } = this.props;
     return (
@@ -46,9 +51,6 @@ class GameMenu extends React.Component {
     );
   }
 }
-// const GameMenu = ({ gameStatus, resetGame, flagCount }) => (
-//
-// );
 
 GameMenu.propTypes = {
   gameStatus: PropTypes.string.isRequired,

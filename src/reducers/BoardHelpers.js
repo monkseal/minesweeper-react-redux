@@ -110,9 +110,14 @@ const hasWon = (board) => {
     cell.hasMine && cell.hasFlag).length;
   return nonOpenCount === flaggedMineCount;
 };
-
+const notPlaying = (board) => {
+  const openAndFlagged =
+    Object.values(board).filter((cell) => (cell.hasFlag || cell.isOpen)).length;
+  return openAndFlagged === 0;
+};
 const flagCount = (board) => Object.values(board).filter((cell) => cell.hasFlag).length;
 
 export {
   currentGameLevelId, emptyBoard, flagCount,
-  forBoardSize, forSurroundCells, hasLost, hasWon, open, resetBoard, toggleFlag };
+  forBoardSize, forSurroundCells, hasLost, notPlaying,
+  hasWon, open, resetBoard, toggleFlag };

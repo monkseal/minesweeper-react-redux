@@ -10,6 +10,8 @@ const mapStateToProps = ({ board }) => {
     gameStatus = "winner";
   } else if (BoardHelpers.hasLost(board)) {
     gameStatus = "loser";
+  } else if (BoardHelpers.notPlaying(board)) {
+    gameStatus = "notPlaying";
   }
 
   return { gameStatus, flagCount };
@@ -17,9 +19,7 @@ const mapStateToProps = ({ board }) => {
 
 const mapDispatchToProps = (dispatch) => ({
   resetGame: () => {
-    dispatch({
-      type: RESET_BOARD
-    });
+    dispatch({ type: RESET_BOARD });
   }
 });
 
