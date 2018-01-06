@@ -16,4 +16,23 @@ const LEVELS = {
   }
 };
 
-export default LEVELS;
+
+const Levels = () => JSON.parse(JSON.stringify(LEVELS));
+
+const randomLocations = ({ boardSize, mines }) => {
+  const locations = [];
+
+  while (locations.length < mines) {
+    const x = Math.floor(Math.random() * boardSize);
+    const y = Math.floor(Math.random() * boardSize);
+    const coordinate = `${x},${y}`;
+    if (!locations.includes(coordinate)) {
+      locations.push(coordinate);
+    }
+  }
+  return locations;
+};
+
+const mineLocationsFor = (level) => randomLocations(LEVELS[level]);
+
+export { Levels as default, mineLocationsFor };

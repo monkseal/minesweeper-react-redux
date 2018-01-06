@@ -1,14 +1,19 @@
 import { RESET_BOARD, OPEN_CELL, TOGGLE_CELL_FLAG } from "../actions/boardActions";
 import defaultStore from "./defaultStore";
 import * as BoardHelpers from "./BoardHelpers";
+import Levels, { mineLocationsFor } from "./Levels";
+
+const LEVELS = Levels();
 
 const minesweeperReducer = (state = defaultStore, action = { type: "" }) => {
   switch (action.type) {
     case RESET_BOARD: {
-      const board = BoardHelpers.resetBoard(action.boardSize, action.mineLocations);
+      // get level
+      // get random mines for that level
+      const { boardSize } = LEVELS[action.level];
+      const mineLocations = mineLocationsFor(action.level);
+      const board = BoardHelpers.resetBoard(boardSize, mineLocations);
       return {
-        // check the beginner, expert, etc and figure out the board
-        // create random mine location for that board size
         ...state, board
       };
     }
