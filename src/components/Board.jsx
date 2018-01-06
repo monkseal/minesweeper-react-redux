@@ -6,10 +6,10 @@ import Cell from "../containers/Cell";
 import GameMenu from "../containers/GameMenu";
 import LevelMenu from "../containers/LevelMenu";
 
-const Board = ({ table }) => (
+const Board = ({ table, activeLevel }) => (
   <div>
     <LevelMenu />
-    <div className="MineSweeper easy">
+    <div className={`MineSweeper ${activeLevel}`}>
       <GameMenu />
       <table className="Table" >
         <tbody>
@@ -27,7 +27,8 @@ const Board = ({ table }) => (
 );
 
 Board.propTypes = {
-  table: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.object)).isRequired
+  table: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.object)).isRequired,
+  activeLevel: PropTypes.string.isRequired
 };
 
 export default Board;

@@ -1,6 +1,8 @@
 /* eslint-disable max-len */
 import { defaultCell } from "./defaultStore";
+import Levels from "./Levels";
 
+const LEVELS = Levels();
 const SEPARATOR = ",";
 
 const parseCoordinates = (id) => {
@@ -17,6 +19,13 @@ const forBoardSize = (boardSize, callback) => {
       callback(coordinate, row, col);
     }
   }
+};
+
+const currentGameLevelId = (board) => {
+  const boardSize = Math.sqrt((Object.keys(board).length));
+  return Object.keys(LEVELS).find((id) => (
+    LEVELS[id].boardSize === boardSize
+  ));
 };
 
 const forSurroundCells = (coordinate, callback) => {
@@ -102,4 +111,8 @@ const hasWon = (board) => {
   return nonOpenCount === flaggedMineCount;
 };
 
-export { emptyBoard, forBoardSize, forSurroundCells, hasLost, hasWon, open, resetBoard, toggleFlag };
+const flagCount = (board) => Object.values(board).filter((cell) => cell.hasFlag).length;
+
+export {
+  currentGameLevelId, emptyBoard, flagCount,
+  forBoardSize, forSurroundCells, hasLost, hasWon, open, resetBoard, toggleFlag };

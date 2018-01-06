@@ -156,15 +156,15 @@ object, embed {
   margin: 0 auto;
 }
 
-.MineSweeper.easy {
+.MineSweeper.BEGINNER {
   width: 310px;
 }
 
-.MineSweeper.normal {
+.MineSweeper.INTERMEDIATE {
   width: 490px;
 }
 
-.MineSweeper.hard {
+.MineSweeper.EXPERT {
   width: 900px;
 }
 

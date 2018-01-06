@@ -2,15 +2,21 @@ import { connect } from "react-redux";
 import LevelMenu from "../components/LevelMenu";
 import * as BoardHelpers from "../reducers/BoardHelpers";
 import { RESET_BOARD } from "../actions/boardActions";
+import Levels from "../reducers/Levels";
 
-const mapStateToProps = (state, ownProps) => ownProps;
+const LEVELS = Levels();
+
+const mapStateToProps = ({ board }) => {
+  const gameLevels = Object.keys(LEVELS).map((id) => ({ id, name: LEVELS[id].name }));
+
+  return { gameLevels, activeLevel: BoardHelpers.currentGameLevelId(board) };
+};
 
 const mapDispatchToProps = (dispatch) => ({
   changeLevel: (level) => {
     dispatch({
       type: RESET_BOARD,
-      boardSize: 9,
-      mineLocations: ["5,5", "1,3", "2,2", "3,3", "1,8", "6,6", "7,7"]
+      level
     });
   }
 });

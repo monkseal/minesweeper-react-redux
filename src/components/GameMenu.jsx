@@ -5,19 +5,21 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const GameMenu = ({ smiley, resetGame }) => (
+const GameMenu = ({ gameStatus, resetGame, flagCount }) => (
   <div>
-    <span className="MineSweeper__flagNum">TODO</span>
+    <span className="MineSweeper__flagNum">{`${flagCount}`}</span>
     <span className="MineSweeper__face">
-      <span className={`button ${smiley}`} role="button" onClick={() => resetGame()} />
+      <span className={`button ${gameStatus}`} role="button" onClick={() => resetGame()} />
     </span>
     <span className="MineSweeper__time">TODO </span>
   </div>
 );
 
 GameMenu.propTypes = {
-  smiley: PropTypes.string.isRequired,
-  resetGame: PropTypes.func.isRequired
+  gameStatus: PropTypes.string.isRequired,
+  resetGame: PropTypes.func.isRequired,
+  flagCount: PropTypes.number.isRequired
 };
+
 
 export default GameMenu;

@@ -4,26 +4,21 @@ import * as BoardHelpers from "../reducers/BoardHelpers";
 import { RESET_BOARD } from "../actions/boardActions";
 
 const mapStateToProps = ({ board }) => {
+  const flagCount = BoardHelpers.flagCount(board);
+  let gameStatus = "playing";
   if (BoardHelpers.hasWon(board)) {
-    return {
-      smiley: "winner"
-    };
+    gameStatus = "winner";
   } else if (BoardHelpers.hasLost(board)) {
-    return {
-      smiley: "loser"
-    };
+    gameStatus = "loser";
   }
 
-  return {
-    smiley: "playing"
-  };
+  return { gameStatus, flagCount };
 };
 
 const mapDispatchToProps = (dispatch) => ({
   resetGame: () => {
     dispatch({
-      type: RESET_BOARD,
-      level: "BEGINNER"
+      type: RESET_BOARD
     });
   }
 });

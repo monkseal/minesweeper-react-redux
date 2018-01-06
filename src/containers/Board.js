@@ -9,8 +9,8 @@ const mapStateToProps = ({ board }) => {
     if (!table[row]) { table[row] = []; }
     table[row][col] = board[coordinate];
   });
-
-  return { table };
+  // TODO
+  return { table, activeLevel: BoardHelpers.currentGameLevelId(board) };
 };
 
 const Container = connect(mapStateToProps)(Board);

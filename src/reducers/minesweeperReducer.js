@@ -8,10 +8,9 @@ const LEVELS = Levels();
 const minesweeperReducer = (state = defaultStore, action = { type: "" }) => {
   switch (action.type) {
     case RESET_BOARD: {
-      // get level
-      // get random mines for that level
-      const { boardSize } = LEVELS[action.level];
-      const mineLocations = mineLocationsFor(action.level);
+      const level = action.level || BoardHelpers.currentGameLevelId(state.board);
+      const { boardSize } = LEVELS[level];
+      const mineLocations = mineLocationsFor(level);
       const board = BoardHelpers.resetBoard(boardSize, mineLocations);
       return {
         ...state, board
