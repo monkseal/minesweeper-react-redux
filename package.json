@@ -2,6 +2,7 @@
   "name": "minesweeper-react-redux",
   "version": "0.1.0",
   "private": true,
+  "homepage" : "http://kenglish.co/minesweeper-react-redux",
   "dependencies": {
     "eslint-plugin-import": "^2.7.0",
     "prop-types": "^15.6.0",

@@ -1,6 +1,16 @@
 # Minesweeper-React-Redux
 
-This project is a React/Redux version of Minesweeper. Please see my 10 part screencast on Youtube where I built this project from the ground up.
+## TLDR;
+[Minesweeper App Running Here](http://kenglish.co/minesweeper-react-redux/)
+
+[
+Blog Article/Tutorial Start Here
+](http://kenglish.co/blog/2018/1/minesweeper-react-redux-part-1-5/)
+
+
+## Intro
+
+This project is a React/Redux version of Minesweeper. Please see my 14 part screencast on Youtube where I built this project from the ground up.
 
 The project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
@@ -34,7 +44,7 @@ The build is minified and the filenames include the hashes.<br>
 
 ## Screencasts
 
-This repo was used to create a screencast tutorial. You can follow along as it was being built. I summarize a bit on the blog here:
+This repo was created as I build my 14 part screencast tutorial on how to build a Minesweeper Game in React/Redux. You can follow along as it was being built. I summarize a bit on my blog here:
 
 [
 Minesweeper React Redux Screencast Tutorial - Part 1-5 - Overview
