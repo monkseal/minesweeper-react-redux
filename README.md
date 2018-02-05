@@ -32,10 +32,35 @@ It correctly bundles React in production mode and optimizes the build for the be
 The build is minified and the filenames include the hashes.<br>
 
 
+## Screencasts
 
-### TODO:
-- [ ] Write code to determine if Won or Lost
-- [ ] Add header with smiley button to restart game.
-- [ ] Add random mine generation code.
-- [ ] Add different levels.
-- [ ] Add timer that resets when games is restarted.
+This repo was used to create a screencast tutorial. You can follow along as it was being built. I summarize a bit on the blog here:
+
+[
+Minesweeper React Redux Screencast Tutorial - Part 1-5 - Overview
+](http://kenglish.co/blog/2018/1/minesweeper-react-redux-part-1-5/)
+
+[
+Minesweeper React Redux Screencast Tutorial - Part 6-10
+](http://kenglish.co/blog/2018/1/minesweeper-react-redux-part-6-10/)
+
+[
+Minesweeper React Redux Screencast Tutorial - Parts 11-14
+](http://kenglish.co/blog/2018/1/minesweeper-react-redux-part-11-14/)
+
+Or go directly to the Youtube videos:
+
+* [Minesweeper React Redux Screencast Tutorial - Part 1](https://www.youtube.com/watch?v=JCwGpMWWvdA)
+* [Minesweeper React Redux Screencast Tutorial - Part 2](https://www.youtube.com/watch?v=cErDomfHNTM)
+* [Minesweeper React Redux Screencast Tutorial - Part 3](https://www.youtube.com/watch?v=D3T0NiX3Yjo)
+* [Minesweeper React Redux Screencast Tutorial - Part 4](https://www.youtube.com/watch?v=c2NGgmy_9Rg)
+* [Minesweeper React Redux Screencast Tutorial - Part 5](https://www.youtube.com/watch?v=EjcdU7pjsTg)
+* [Minesweeper React Redux Screencast Tutorial - Part 6](https://www.youtube.com/watch?v=mUrx7n0bJB0)
+* [Minesweeper React Redux Screencast Tutorial - Part 7](https://www.youtube.com/watch?v=oVt3BnABtYA)
+* [Minesweeper React Redux Screencast Tutorial - Part 8](https://www.youtube.com/watch?v=JCwGpMWWvdA)
+* [Minesweeper React Redux Screencast Tutorial - Part 9](https://www.youtube.com/watch?v=omvZIGCoJEE)
+* [Minesweeper React Redux Screencast Tutorial - Part 10](https://www.youtube.com/watch?v=SF65XWD9KyY)
+* [Minesweeper React Redux Screencast Tutorial - Part 11](https://www.youtube.com/watch?v=Jc0-fRs81s8)
+* [Minesweeper React Redux Screencast Tutorial - Part 12](https://www.youtube.com/watch?v=VAYPGFsNW_E)
+* [Minesweeper React Redux Screencast Tutorial - Part 13](https://www.youtube.com/watch?v=cDUNxZ89NKQ)
+* [Minesweeper React Redux Screencast Tutorial - Part 14](https://www.youtube.com/watch?v=PBRk-h8itRI)
