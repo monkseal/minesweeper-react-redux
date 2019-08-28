@@ -5,14 +5,12 @@
   "homepage": "http://kenglish.co/minesweeper-react-redux",
   "dependencies": {
     "eslint-plugin-import": "^2.18.2",
-    "hoek": "~> 4.2.1",
-    "prop-types": "^15.6.0",
+    "prop-types": "^15.7.2",
     "react": "^16.2.0",
     "react-dom": "^16.2.1",
     "react-redux": "^5.1.1",
     "react-scripts": "3.1.1",
-    "redux": "^3.7.2",
-    "sshpk": "1.13.2"
+    "redux": "^3.7.2"
   },
   "scripts": {
     "start": "react-scripts start",
