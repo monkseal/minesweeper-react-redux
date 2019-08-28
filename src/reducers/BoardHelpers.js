@@ -64,7 +64,7 @@ const toggleFlag = (board, id) => {
 };
 
 const openAround = (board, id) => {
-  let newBoard = Object.assign({}, board);
+  let newBoard = { ...board };
 
   forSurroundCells(id, (coordinate) => {
     if (newBoard[coordinate] && !newBoard[coordinate].hasMine && !newBoard[coordinate].isOpen) {
@@ -106,13 +106,11 @@ const hasWon = (board) => {
   if (hasLost(board)) { return false; }
 
   const nonOpenCount = Object.values(board).filter((cell) => !cell.isOpen).length;
-  const flaggedMineCount = Object.values(board).filter((cell) =>
-    cell.hasMine && cell.hasFlag).length;
+  const flaggedMineCount = Object.values(board).filter((cell) => cell.hasMine && cell.hasFlag).length;
   return nonOpenCount === flaggedMineCount;
 };
 const notPlaying = (board) => {
-  const openAndFlagged =
-    Object.values(board).filter((cell) => (cell.hasFlag || cell.isOpen)).length;
+  const openAndFlagged = Object.values(board).filter((cell) => (cell.hasFlag || cell.isOpen)).length;
   return openAndFlagged === 0;
 };
 const flagCount = (board) => Object.values(board).filter((cell) => cell.hasFlag).length;
@@ -120,4 +118,5 @@ const flagCount = (board) => Object.values(board).filter((cell) => cell.hasFlag)
 export {
   currentGameLevelId, emptyBoard, flagCount,
   forBoardSize, forSurroundCells, hasLost, notPlaying,
-  hasWon, open, resetBoard, toggleFlag };
+  hasWon, open, resetBoard, toggleFlag
+};

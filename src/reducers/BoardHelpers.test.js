@@ -1,4 +1,6 @@
-import { emptyBoard, hasLost, hasWon, resetBoard, open, toggleFlag } from "./BoardHelpers";
+import {
+  emptyBoard, hasLost, hasWon, resetBoard, open, toggleFlag
+} from "./BoardHelpers";
 
 const boardFixture = {
   "0,0": {

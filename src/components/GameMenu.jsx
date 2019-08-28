@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events,
                   jsx-a11y/no-noninteractive-element-interactions,
                   react/no-did-mount-set-state,
-                  jsx-a11y/interactive-supports-focus
+                  jsx-a11y/control-has-associated-label
 */
 import React from "react";
 import PropTypes from "prop-types";
@@ -20,19 +20,20 @@ class GameMenu extends React.Component {
   }
 
   componentWillUnmount() {
-    this.clearInterval(this.state.timer);
+    const { timer } = this.state;
+    this.clearInterval(timer);
   }
 
   tick() {
-    if (this.props.gameStatus === "notPlaying") {
+    const { gameStatus } = this.props;
+    const { resetTimer } = this.state;
+    let { counter } = this.state;
+    if (gameStatus === "notPlaying") {
       this.setState({ counter: 0, resetTimer: true });
     }
 
-    if (this.props.gameStatus === "playing") {
-      let counter = this.state.counter + 1;
-      if (this.state.resetTimer) {
-        counter = 0;
-      }
+    if (gameStatus === "playing") {
+      counter = resetTimer ? 0 : counter + 1;
       this.setState({ counter, resetTimer: false });
     } else {
       this.setState({ resetTimer: true });
@@ -41,6 +42,7 @@ class GameMenu extends React.Component {
 
   render() {
     const { gameStatus, resetGame, flagCount } = this.props;
+    const { counter } = this.state;
     return (
       <div>
         <span className="MineSweeper__flagNum">{`${flagCount}`}</span>
@@ -51,7 +53,10 @@ class GameMenu extends React.Component {
             onClick={() => resetGame()}
           />
         </span>
-        <span className="MineSweeper__time">{this.state.counter} </span>
+        <span className="MineSweeper__time">
+          {counter}
+          {" "}
+        </span>
       </div>
     );
   }

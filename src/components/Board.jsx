@@ -1,4 +1,5 @@
 /* eslint-disable react/no-array-index-key */
+/* eslint-disable react/jsx-props-no-spreading */
 import React from "react";
 import PropTypes from "prop-types";
 
@@ -11,15 +12,15 @@ const Board = ({ table, activeLevel }) => (
     <LevelMenu />
     <div className={`MineSweeper ${activeLevel}`}>
       <GameMenu />
-      <table className="Table" >
+      <table className="Table">
         <tbody>
           {table.map((cells, row) => (
             <tr key={`mine-row-${row}`}>
               {cells.map((cell) => (
                 <Cell key={`mine-cell-${cell.id}`} {...cell} />
-            ))}
+              ))}
             </tr>
-        ))}
+          ))}
         </tbody>
       </table>
     </div>

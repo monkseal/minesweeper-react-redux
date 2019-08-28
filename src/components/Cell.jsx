@@ -6,13 +6,11 @@ import React from "react";
 import PropTypes from "prop-types";
 
 const OpenCell = ({ count, hasMine }) => (
-  <div className="Cell__cover Cell__cover--opened" >
-    {!hasMine &&
-      <span className={`Cell__number${count}`}>{count}</span>
-    }
-    {hasMine &&
-      <span className="Cell__bomb">b</span>
-    }
+  <div className="Cell__cover Cell__cover--opened">
+    {!hasMine
+      && <span className={`Cell__number${count}`}>{count}</span>}
+    {hasMine
+      && <span className="Cell__bomb">b</span>}
   </div>
 );
 
